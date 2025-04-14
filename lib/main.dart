@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_error_screen/custom_error_screen.dart';
 
 import 'home_screen.dart';
 void main(){
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      home: CustomErrorScreen(),
     );
   }
 }
