@@ -11,9 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor:Color(0xff2c62ff),
+      ),
       debugShowCheckedModeBanner: false,
       builder: (context,child){
-
           ErrorWidget.builder = (errorDetails){
             print("error == ${errorDetails.summary}");
             print("Error Screen == ${errorDetails.context}");
