@@ -11,7 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CustomErrorScreen(),
+      builder: (context,child){
+        ErrorWidget.builder = (errorDetails){
+          print("error == ${errorDetails.summary}");
+          return CustomErrorScreen();
+        };
+        return child!;
+      },
+      home: HomeScreen(),
     );
   }
 }
