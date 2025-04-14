@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       builder: (context,child){
         ErrorWidget.builder = (errorDetails){
           print("error == ${errorDetails.summary}");
+          print("Error Screen == ${errorDetails.context}");
           return CustomErrorScreen();
         };
         return child!;

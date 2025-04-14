@@ -4,6 +4,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.deepPurple,
+        title: Text("DashBoard"),
+      ),
+      body: Center(
+        child: Text("Example for Error Screen ${error!}"),
+      ),
+    );
   }
 }
+final error = null;
