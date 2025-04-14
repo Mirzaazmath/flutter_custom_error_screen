@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_error_screen/data_model.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -90,21 +91,48 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 15),
               Container(
-                height: 250,
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.symmetric(vertical: 15),
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.grey.shade300,
-                          blurRadius: 15,
+                          color: Colors.black12,
+                          blurRadius: 20,
                           offset: Offset(5,10)
                       )
                     ]
                 ),
-              )
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: dailyExpenseList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context,index){
+                    return ListTile(
+                      leading: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: dailyExpenseList[index].color,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Icon(dailyExpenseList[index].icon,color: Colors.white,),
+                      ),
+                      title: Text(dailyExpenseList[index].title,style: TextStyle(color: Colors.black)),
+                      subtitle: Text("\$${dailyExpenseList[index].amount}",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                      trailing: Text(dailyExpenseList[index].time,style: TextStyle(color: Colors.blueGrey)),
+                    );}),
+
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("WISHLIST",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.grey),),
+                  Text("See All",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Theme.of(context).primaryColor),),
+                ],
+              ),
               ],
             
           ),
