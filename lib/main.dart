@@ -11,12 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       builder: (context,child){
-        ErrorWidget.builder = (errorDetails){
-          print("error == ${errorDetails.summary}");
-          print("Error Screen == ${errorDetails.context}");
-          return CustomErrorScreen();
-        };
+
+          ErrorWidget.builder = (errorDetails){
+            print("error == ${errorDetails.summary}");
+            print("Error Screen == ${errorDetails.context}");
+            return CustomErrorScreen();
+          };
+
         return child!;
       },
       home: HomeScreen(),

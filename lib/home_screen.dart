@@ -5,15 +5,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.deepPurple,
-        title: Text("DashBoard"),
-      ),
-      body: Center(
-        child: Text("Example for Error Screen ${error!}"),
-      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+
+          ],
+          
+        ),
+      )
     );
   }
 }
-final error = null;
