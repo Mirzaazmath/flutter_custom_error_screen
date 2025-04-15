@@ -10,9 +10,7 @@ class OptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Options"),
-      ),
+      appBar: AppBar(title: Text("Options")),
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.of(
@@ -36,43 +34,44 @@ class OptionsScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Consumer(
-            builder: (context,ref,child) {
-              final  noErrorVal = ref.watch(showError);
-              final  withCustomErrorScreen = ref.watch(showCustomScreen);
+          builder: (context, ref, child) {
+            final noErrorVal = ref.watch(showError);
+            final withCustomErrorScreen = ref.watch(showCustomScreen);
 
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ListTile(
-                    title: Text(
-                      "Screen With Error",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    trailing: Switch(
-                      value: noErrorVal,
-                      onChanged: (val) {
-                        ref.read(showError.notifier).update((state)=>val);
-                      },
-                    ),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  title: Text(
+                    "Screen With Error",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  ListTile(
-                    title: Text(
-                      "Custom Screen With Error",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    trailing: Switch(
-                      value: withCustomErrorScreen,
-                      onChanged: (val) {
-                        ref.read(showCustomScreen.notifier).update((state)=>val);
-                      },
-                    ),
+                  trailing: Switch(
+                    value: noErrorVal,
+                    onChanged: (val) {
+                      ref.read(showError.notifier).update((state) => val);
+                    },
                   ),
-                ],
-              );
-            }
+                ),
+                ListTile(
+                  title: Text(
+                    "Custom Screen With Error",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  trailing: Switch(
+                    value: withCustomErrorScreen,
+                    onChanged: (val) {
+                      ref
+                          .read(showCustomScreen.notifier)
+                          .update((state) => val);
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 }
-
