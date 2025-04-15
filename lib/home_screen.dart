@@ -133,6 +133,39 @@ class HomeScreen extends StatelessWidget {
                   Text("See All",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Theme.of(context).primaryColor),),
                 ],
               ),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 95,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                    itemCount: wishList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context,index){
+                      return Container(
+                        width: 70,
+                        height: 60,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: wishList[index].color,
+                          borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                            BoxShadow(
+                            color: wishList[index].color.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: Offset(10,3)
+                        )
+                            ]
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(wishList[index].icon,color: Colors.white,),
+                            Text(wishList[index].title,style: TextStyle(color: Colors.white),)
+                          ],
+                        ),
+
+                      );}),
+              )
               ],
             
           ),
