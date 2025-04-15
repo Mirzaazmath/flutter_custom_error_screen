@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return Consumer(
       builder: (context,ref,child) {
         final showCustomError = ref.watch(showCustomScreen);
+        print(showCustomError);
         return MaterialApp(
           theme: ThemeData(
             primaryColor:Color(0xff2c62ff),
@@ -27,6 +28,12 @@ class MyApp extends StatelessWidget {
                 debugPrint("Error Screen == ${errorDetails.context}");
                 return CustomErrorScreen();
               };
+            }else {
+              ErrorWidget.builder = (errorDetails){
+                debugPrint("error == ${errorDetails.summary}");
+                debugPrint("Error Screen == ${errorDetails.context}");
+                return ErrorWidget(errorDetails.exception);};
+                  
             }
 
 
