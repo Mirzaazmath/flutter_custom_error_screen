@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_error_screen/custom_error_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'home_screen.dart';
 import 'options_screen.dart';
 void main(){
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor:Color(0xff2c62ff),
-      ),
-      debugShowCheckedModeBanner: false,
-      builder: (context,child){
-          ErrorWidget.builder = (errorDetails){
-            print("error == ${errorDetails.summary}");
-            print("Error Screen == ${errorDetails.context}");
-            return CustomErrorScreen();
-          };
+    return Consumer(
+      builder: (context,ref,child) {
+        final showCustomError = ref.watch(showCustomScreen);
+        return MaterialApp(
+          theme: ThemeData(
+            primaryColor:Color(0xff2c62ff),
+          ),
+          debugShowCheckedModeBanner: false,
+          builder: (context,child){
+            if(showCustomError){
+              ErrorWidget.builder = (errorDetails){
+                debugPrint("error == ${errorDetails.summary}");
+                debugPrint("Error Screen == ${errorDetails.context}");
+                return CustomErrorScreen();
+              };
+            }
 
-        return child!;
-      },
-      home: OptionsScreen(),
+
+            return child!;
+          },
+          home: OptionsScreen(),
+        );
+      }
     );
   }
 }
+// For Showing the Error in our app
+final showError = StateProvider((ref)=>false);
+// For Showing the Custom Error Screen in our app
+final showCustomScreen= StateProvider((ref)=>false);
