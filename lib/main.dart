@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_error_screen/custom_error_screen.dart';
 
 import 'home_screen.dart';
+import 'options_screen.dart';
 void main(){
   runApp(MyApp());
 }
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
 
         return child!;
       },
-      home: HomeScreen(),
+      home: OptionsScreen(),
     );
   }
 }
