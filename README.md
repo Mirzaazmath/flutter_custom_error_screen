@@ -39,3 +39,7 @@ A new Flutter project.
  
    
  </table>
+
+ 
+# Output
+<img src ="https://github.com/Mirzaazmath/flutter_custom_error_screen/blob/main/assets/output/result.gif" height="400">
